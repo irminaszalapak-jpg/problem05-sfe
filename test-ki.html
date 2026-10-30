@@ -1,0 +1,47 @@
+<!doctype html><html lang="nb"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta charset="utf-8"><title>Test av KI-lesing – offentlige NVE-rapporter</title><style>
+@page { size: A4; margin: 9mm 12mm; }
+* { box-sizing: border-box; }
+body { font-family: Calibri, "Segoe UI", Arial, sans-serif; font-size: 9.3pt; line-height: 1.22; color: #222; margin: 0; }
+h1 { font-size: 15pt; color: #3d6a34; margin: 0 0 1px; }
+.sub { color: #194373; font-size: 9.3pt; margin: 0 0 5px; border-bottom: 2px solid #3d6a34; padding-bottom: 3px; }
+h2 { font-size: 10.8pt; color: #194373; margin: 6px 0 2px; }
+p { margin: 0 0 3px; } ul { margin: 0 0 3px; padding-left: 16px; } li { margin-bottom: 1px; }
+table { border-collapse: collapse; width: 100%; margin: 2px 0 4px; font-size: 8.8pt; }
+th { background: #eef4ec; color: #194373; text-align: left; padding: 2px 4px; border-bottom: 1.5px solid #b9cdb4; }
+td { padding: 2px 4px; border-bottom: 1px solid #e3e8e5; vertical-align: top; }
+.box { background: #eef4ec; border-left: 5px solid #3d6a34; padding: 5px 9px; margin: 3px 0 5px; font-size: 10pt; }
+.warn { background: #fdf3ec; border-left: 4px solid #c9541f; padding: 3px 8px; margin: 3px 0 4px; }
+.ok { color: #3d6a34; font-weight: bold; } .mid { color: #b07a10; font-weight: bold; } .bad { color: #c9541f; font-weight: bold; }
+.small { font-size: 8pt; color: #5f6b66; } a { color: #194373; }
+@media screen { html,body{background:#fff} body{max-width:200mm;margin:0 auto;padding:16px} table{display:block;overflow-x:auto} }
+</style></head><body>
+<h1>Test av KI-lesing på offentlige rapporter (antakelse Z4)</h1>
+<div class="sub">Irmina Szałapak · problem 05 · 26.10.2026 · foreløpig test før checkpoint 1.11 · offentlig NVE-materiale, ingen SFE-data</div>
+
+<div class="box"><b>Resultatet i én setning:</b> fra skannet maskinskrift leste KI nøkkelverdiene med komponent, sted og dato like godt som OCR-laget eller bedre; fra håndskrift og grafer bare med bekreftelse fra et menneske. <b>Kontroll av et menneske (27.10.2026): 12 verdier sammenlignet visuelt med skannene, inkludert alle der OCR tok feil – 12 av 12 stemmer.</b> Kriteriet for Z4 (≥ 90 % samsvar, hver feil synlig via kilden) er <b>foreløpig oppfylt for tekst</b>, men <b>ikke for grafer</b>.</div>
+
+<h2>Hva vi testet</h2>
+<table><tr><th style=width:44%>Dokument (offentlig)</th><th style=width:22%>Type</th><th style=width:34%>Hva som ble lest</th></tr>
+<tr><td>NVE 1982, <a href="https://publikasjoner.nve.no/diverse/1982/sandslitasje.pa.vannkraftturbiner.driva.kraftverk.1982.pdf">«Sandslitasje på vannkraftturbiner. Driva kraftverk»</a>, s. 8–11 og bilag 1</td><td>skannet maskinskrift, skjema med håndskrift, grafer</td><td>sitert inspeksjonsrapport for turbin 1 (12.12.1977), revisjonsforløp, virkningsgrad før og etter, kostnader, sandanalyse</td></tr>
+<tr><td>NVE 1992 nr. 37, <a href="https://publikasjoner.nve.no/publikasjon/1992/publikasjon1992_37.pdf">«Opprusting og utvidelse av vannkraftverk»</a>, s. 42</td><td>skannet trykk med graf</td><td>virkningsgrad for Pelton- og Francisturbiner, turbindata, graf</td></tr></table>
+<p class="small"><b>Metode:</b> 36 nøkkelverdier. KI leste dem fra sidebildene, og først deretter sammenlignet vi med OCR-tekstlaget som NVE la inn i PDF-en (2010). Hvert avvik ble kontrollert på nytt mot sidebildet. Kildeside er notert ved hver verdi.</p>
+
+<h2>Resultater etter type</h2>
+<table><tr><th style=width:24%>Type</th><th style=width:9%>Verdier</th><th style=width:37%>Resultat</th><th style=width:30%>Hva det betyr for beslutningsgrunnlaget</th></tr>
+<tr><td>Maskinskrift (skann): slitasjemål, datoer, virkningsgrad, kostnader</td><td>26</td><td><span class="ok">26 av 26 lest.</span> 23 stemmer med OCR; i 3 tar OCR feil («1 - 12 mm» i stedet for 1–1½ mm, «11111» i stedet for mm, «90_7%»), mens KI leste riktig</td><td>kan brukes; et menneske kontrollerer utvalgte verdier via lenke til siden</td></tr>
+<tr><td>Håndskrift og kursiv (skjema, figurtekst)</td><td>4</td><td><span class="mid">KI leste alle 4</span> (G-1, 9/3-81, Gevilvatnet, Pr=71,5 Hr=540 nr=600); OCR bommet på alle 4 (bl.a. G-7 og årstallet 1987, umulig i en rapport fra 1982)</td><td>skal alltid bekreftes av et menneske</td></tr>
+<tr><td>Grafer (virkningsgradskurver, søyler for sandsammensetning, graftittel)</td><td>6</td><td><span class="mid">bare omtrentlige verdier</span> (f.eks. toppvirkningsgrad før revisjon ca. 89,5 %, etter ca. 92,8 %); OCR gir ingenting</td><td>kan brukes som orientering, merket «lest av graf»</td></tr>
+<tr><td>Herav usikre eller tvetydige</td><td>(3)</td><td><span class="bad">KI markerte i stedet for å gjette:</span> «2 - 3/10 på radien» og «rose ca. 50 Ø» uten enhet; fallhøyde «645 m» svakt synlig</td><td>nettopp slike steder blir spørsmål til fagpersonen</td></tr></table>
+<p class="small">Til sammen 26 + 4 + 6 = 36 verdier; de 3 usikre er allerede talt med i radene over.</p>
+
+<h2>Funn utover tallene</h2>
+<ul>
+<li><b>Motsigelse i kilden:</b> teksten sier at virkningsgradsmålinger ble gjort ved den første revisjonen, men «for turbin 2 ble ikke slike målinger foretatt», mens figurteksten sier «turbin nr. 2» (og den første revisjonen gjaldt nettopp turbin 2). KI fanget dette; bare et menneske kan avgjøre det. Beslutningsgrunnlaget må vise slike motsigelser, ikke velge én versjon.</li>
+<li><b>Inspeksjonsrapporten har tall, men ingen standard:</b> mål står ved konkrete steder («ledeflater», «øvre lokk»), side om side med verbale vurderinger («meget slitt») og verdier uten enhet. Det er et argument for spørsmål P4 og for en protokoll for funn ved åpning.</li>
+<li><b>Problemet er gammelt:</b> allerede i 1982 skriver forfatterne at nye revisjoner må avgjøres etter fortløpende inspeksjoner, fordi man ikke vet hvordan slitasjen utvikler seg.</li>
+</ul>
+
+<div class="warn"><b>Begrensninger, sagt rett ut:</b> (1) et menneske kontrollerte 12 av 36 verdier (utvalgte, ikke tilfeldige; alle stemte); resten ble sammenlignet med OCR-laget og en ny lesing av bildet. (2) To dokumenter er lite; ingen moderne rapport med tabeller og ingen rapport på nynorsk. (3) Offentlige rapporter er ikke SFEs revisjonsrapporter: den egentlige testen gjøres på 1 rapport fra SFE i uke 2–3 (P6d). (4) Testen sier ingenting om SFE vil dele dokumenter (Z6) eller om fagfolkene vil bruke beslutningsgrunnlaget (Z8).</div>
+<p class="small">Full liste over 36 verdier med kildesider: arbeidsfilen test_odczytu_AI_lista (polsk). Kilder: NVE-publikasjoner fra 1982 og 1992, offentlig tilgjengelige på publikasjoner.nve.no.</p>
+</body></html>
